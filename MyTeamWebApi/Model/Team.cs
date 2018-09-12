@@ -21,7 +21,7 @@ namespace MyTeamWebApi.Model
         public List<MatchResultType> Matches { get; set; }
 
         [IgnoreDataMember]
-        public bool IsValid { get { return !String.IsNullOrWhiteSpace(Name) && Id != 0; } }
+        public bool IsValid { get { return !String.IsNullOrWhiteSpace(Name) && Id > 0; } }
 
         public int GetTotals(MatchResultType result)
         {

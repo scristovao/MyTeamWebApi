@@ -1,0 +1,17 @@
+c:\SCSC\MyTeam\MyTeamWebApi.Tests\obj\Debug\netcoreapp2.1\MyTeamWebApi.Tests.csprojAssemblyReference.cache
+c:\SCSC\MyTeam\MyTeamWebApi.Tests\obj\Debug\netcoreapp2.1\MyTeamWebApi.Tests.csproj.CoreCompileInputs.cache
+c:\SCSC\MyTeam\MyTeamWebApi.Tests\obj\Debug\netcoreapp2.1\MyTeamWebApi.Tests.AssemblyInfoInputs.cache
+c:\SCSC\MyTeam\MyTeamWebApi.Tests\obj\Debug\netcoreapp2.1\MyTeamWebApi.Tests.AssemblyInfo.cs
+c:\SCSC\MyTeam\MyTeamWebApi.Tests\bin\Debug\netcoreapp2.1\xunit.runner.visualstudio.dotnetcore.testadapter.dll
+c:\SCSC\MyTeam\MyTeamWebApi.Tests\bin\Debug\netcoreapp2.1\xunit.runner.reporters.netcoreapp10.dll
+c:\SCSC\MyTeam\MyTeamWebApi.Tests\bin\Debug\netcoreapp2.1\xunit.runner.utility.netcoreapp10.dll
+c:\SCSC\MyTeam\MyTeamWebApi.Tests\bin\Debug\netcoreapp2.1\MyTeamWebApi.Tests.deps.json
+c:\SCSC\MyTeam\MyTeamWebApi.Tests\bin\Debug\netcoreapp2.1\MyTeamWebApi.Tests.runtimeconfig.json
+c:\SCSC\MyTeam\MyTeamWebApi.Tests\bin\Debug\netcoreapp2.1\MyTeamWebApi.Tests.runtimeconfig.dev.json
+c:\SCSC\MyTeam\MyTeamWebApi.Tests\bin\Debug\netcoreapp2.1\MyTeamWebApi.Tests.dll
+c:\SCSC\MyTeam\MyTeamWebApi.Tests\bin\Debug\netcoreapp2.1\MyTeamWebApi.Tests.pdb
+c:\SCSC\MyTeam\MyTeamWebApi.Tests\bin\Debug\netcoreapp2.1\MyTeamWebApi.dll
+c:\SCSC\MyTeam\MyTeamWebApi.Tests\bin\Debug\netcoreapp2.1\MyTeamWebApi.pdb
+c:\SCSC\MyTeam\MyTeamWebApi.Tests\obj\Debug\netcoreapp2.1\MyTeamWebApi.Tests.csproj.CopyComplete
+c:\SCSC\MyTeam\MyTeamWebApi.Tests\obj\Debug\netcoreapp2.1\MyTeamWebApi.Tests.dll
+c:\SCSC\MyTeam\MyTeamWebApi.Tests\obj\Debug\netcoreapp2.1\MyTeamWebApi.Tests.pdb

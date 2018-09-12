@@ -13,11 +13,13 @@ namespace MyTeamWebApi.Model
 
         public TeamFactory()
         {
-            _inMemoryTeams = new List<Team> {
-                new Team { Id = 1, Name = "Sporting", CoachName = "Damasio" },
-                new Team { Id = 2, Name = "Benfica", CoachName = "Andre" },
-                new Team { Id = 3, Name = "Beira Mar", CoachName = "Mourinho" },
-            };
+            _inMemoryTeams = new List<Team>();
+
+            // _inMemoryTeams = new List<Team> {
+            //     new Team { Id = 1, Name = "Sporting", CoachName = "Damasio" },
+            //     new Team { Id = 2, Name = "Benfica", CoachName = "Andre" },
+            //     new Team { Id = 3, Name = "Beira Mar", CoachName = "Mourinho" },
+            // };
         }
 
         public List<Team> Get(string teamName = null, string coachName = null)
@@ -56,7 +58,7 @@ namespace MyTeamWebApi.Model
 
         public Team Get(int id)
         {
-            return _inMemoryTeams.FirstOrDefault(x => x.Id == id);
+            return _inMemoryTeams.FirstOrDefault(x => x.IsActive && x.Id == id);
         }
 
         public bool Update(int id, Team team)

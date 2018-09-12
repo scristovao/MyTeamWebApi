@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
+using MyTeamWebApi.Globals;
 using MyTeamWebApi.Interfaces;
 using MyTeamWebApi.Model;
 
@@ -13,10 +15,12 @@ namespace MyTeamWebApi.Controllers
     public class TeamsController : ControllerBase
     {
         private readonly ITeamService _teamService;
+        private readonly ILogger<TeamsController> _logger;
 
-        public TeamsController(ITeamService teamService)
+        public TeamsController(ITeamService teamService, ILogger<TeamsController> logger)
         {
             _teamService = teamService;
+            _logger = logger;
         }
 
         // GET api/team?name=test team&coach=mourinho
@@ -33,24 +37,20 @@ namespace MyTeamWebApi.Controllers
             );
         }
 
-        // GET api/team/1
+        //GET api/team/1
         //Gets a team's detail data, given it's Id
         [HttpGet("{id}")]
         public ActionResult<Team> Get(int id)
         {
             if (id <= 0)
             {
+                _logger.LogWarning("TeamsController.Get: " + TextResources.InvalidTeamId);
                 return BadRequest();
             }
 
             var team = _teamService.GetTeam(id);
 
-            if (team == null)
-            {
-                return NotFound();
-            }
-
-            return new ObjectResult(team);
+            return team != null? new ObjectResult(team): (ActionResult)NotFound();
         }
 
         // GET api/team/1/match/resultType
@@ -60,6 +60,7 @@ namespace MyTeamWebApi.Controllers
         {
             if (id <= 0)
             {
+                _logger.LogWarning("TeamsController.GetMatchTotals: " + TextResources.InvalidTeamId);
                 return BadRequest();
             }
 
@@ -79,8 +80,9 @@ namespace MyTeamWebApi.Controllers
         [HttpPost]
         public IActionResult Post([FromBody] Team team)
         {
-            if (team == null)
+            if (team == null || team.Id <= 0)
             {
+                _logger.LogWarning("TeamsController.Post: " + TextResources.InvalidTeamInstance);
                 return BadRequest();
             }
 
@@ -95,18 +97,12 @@ namespace MyTeamWebApi.Controllers
         {
             if (id <= 0 || team == null)
             {
+                _logger.LogWarning("TeamsController.Put: " + TextResources.InvalidTeamInstance);
                 return BadRequest();
             }
 
-            var teamToUpdate = _teamService.GetTeam(id);
-
-            if (teamToUpdate == null)
-            {
-                return NotFound();
-            }
-
             var result = _teamService.UpdateTeam(id, team);
-            return result ? (StatusCodeResult)Ok() : (StatusCodeResult)UnprocessableEntity();
+            return result ? (StatusCodeResult)Ok() : (StatusCodeResult)NotFound();
         }
 
         // PUT api/team/1/match/<all|win|lose|tie>
@@ -116,18 +112,12 @@ namespace MyTeamWebApi.Controllers
         {
             if (id <= 0)
             {
+                _logger.LogWarning("TeamsController.PutMatch: " + TextResources.InvalidTeamId);
                 return BadRequest();
             }
 
-            var teamToUpdate = _teamService.GetTeam(id);
-
-            if (teamToUpdate == null)
-            {
-                return NotFound();
-            }
-
             var result = _teamService.AddMatch(id, matchresulttype);
-            return result ? (StatusCodeResult)Ok() : (StatusCodeResult)UnprocessableEntity();
+            return result ? (StatusCodeResult)Ok() : (StatusCodeResult)NotFound();
         }
 
         // DELETE api/team/1
@@ -137,14 +127,8 @@ namespace MyTeamWebApi.Controllers
         {
             if (id <= 0)
             {
+                _logger.LogWarning("TeamsController.Delete: " + TextResources.InvalidTeamId);
                 return BadRequest();
-            }
-
-            var teamToUpdate = _teamService.GetTeam(id);
-
-            if (teamToUpdate == null)
-            {
-                return NotFound();
             }
 
             var result = _teamService.DeleteTeam(id);
